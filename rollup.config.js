@@ -22,7 +22,7 @@ export default {
     }),
     /** Resolve bare module imports */
     copy({
-      targets: [{ src: "lib/", dest: "dist" }],
+      targets: [{ src: "lib/", dest: "public" }],
     }),
     nodeResolve(),
     /** Minify JS, compile JS to a lower language target */
