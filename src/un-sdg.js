@@ -18,6 +18,7 @@ export class unSdg extends DDDSuper(LitElement) {
     this.fetchPriority = "low";
     this.colorOnly = false;
     this.isImageVisible = true;
+    this.color = "";
   }
   // Define properties for the custom element with their types
 
@@ -32,6 +33,7 @@ export class unSdg extends DDDSuper(LitElement) {
       fetchPriority: { type: String },
       colorOnly: { type: Boolean },
       isImageVisible: { type: Boolean },
+      color: { type: String },
     };
   }
   // Define CSS styles for the custom element
@@ -83,99 +85,99 @@ export class unSdg extends DDDSuper(LitElement) {
   updateProperties() {
     const goals = {
       circle: {
-        img: "./lib/svgs/circle.png",
+        img: "../lib/svgs/circle.png",
         label: "Sustainable developments logo",
         color: "white",
       },
       all: {
-        img: "./lib/svgs/all.svg",
+        img: "../lib/svgs/all.svg",
         label: "All goals",
         color: "white",
       },
       1: {
-        img: "./lib/svgs/goal-1.svg",
+        img: "../lib/svgs/goal-1.svg",
         label: "Goal 1: No poverty",
-        color: "var(--un-sdg-goal-1)",
+        color: "rgb(235, 28, 44)",
       },
       2: {
-        img: "./lib/svgs/goal-2.svg",
+        img: "../lib/svgs/goal-2.svg",
         label: "Goal 2: Zero hunger",
-        color: "var(--un-sdg-goal-2)",
+        color: "rgb(210, 160, 42)",
       },
       3: {
-        img: "./lib/svgs/goal-3.svg",
+        img: "../lib/svgs/goal-3.svg",
         label: "Goal 3: Good health and well-being",
-        color: "var(--un-sdg-goal-3)",
+        color: "rgb(44, 155, 72)",
       },
       4: {
-        img: "./lib/svgs/goal-4.svg",
+        img: "../lib/svgs/goal-4.svg",
         label: "Goal 4: Quality education",
-        color: "var(--un-sdg-goal-4)",
+        color: "rgb(194, 31, 51)",
       },
       5: {
-        img: "./lib/svgs/goal-5.svg",
+        img: "../lib/svgs/goal-5.svg",
         label: "Goal 5: Gender equality",
-        color: "var(--un-sdg-goal-5)",
+        color: "rgb(239, 64, 42)",
       },
       6: {
-        img: "./lib/svgs/goal-6.svg",
+        img: "../lib/svgs/goal-6.svg",
         label: "Goal 6: Clean water and sanitation",
-        color: "var(--un-sdg-goal-6)",
+        color: "rgb(0, 173, 216)",
       },
       7: {
-        img: "./lib/svgs/goal-7.svg",
+        img: "../lib/svgs/goal-7.svg",
         label: "Goal 7: Affordable and clean energy",
-        color: "var(--un-sdg-goal-7)",
+        color: "rgb(253, 183, 19)",
       },
       8: {
-        img: "./lib/svgs/goal-8.svg",
+        img: "../lib/svgs/goal-8.svg",
         label: "Goal 8: Decent work and economic growth",
-        color: "var(--un-sdg-goal-8)",
+        color: "rgb(143, 23, 55)",
       },
       9: {
-        img: "./lib/svgs/goal-9.svg",
+        img: "../lib/svgs/goal-9.svg",
         label: "Goal 9: Industry, innovation and infrastructure",
-        color: "var(--un-sdg-goal-9)",
+        color: "rgb(243, 109, 36)",
       },
       10: {
-        img: "./lib/svgs/goal-10.svg",
+        img: "../lib/svgs/goal-10.svg",
         label: "Goal 10: Reduced inequalities",
-        color: "var(--un-sdg-goal-10)",
+        color: "rgb(224, 21, 131)",
       },
       11: {
-        img: "./lib/svgs/goal-11.svg",
+        img: "../lib/svgs/goal-11.svg",
         label: "Goal 11: Sustainable cities and communities",
-        color: "var(--un-sdg-goal-11)",
+        color: "rgb(249, 157, 37)",
       },
       12: {
-        img: "./lib/svgs/goal-12.svg",
+        img: "../lib/svgs/goal-12.svg",
         label: "Goal 12: Responsible consumption and production",
-        color: "var(--un-sdg-goal-12)",
+        color: "rgb(207, 141, 42)",
       },
       13: {
-        img: "./lib/svgs/goal-13.svg",
+        img: "../lib/svgs/goal-13.svg",
         label: "Goal 13: Climate action",
-        color: "var(--un-sdg-goal-13)",
+        color: "rgb(72, 119, 61)",
       },
       14: {
-        img: "./lib/svgs/goal-14.svg",
+        img: "../lib/svgs/goal-14.svg",
         label: "Goal 14: Life below water",
-        color: "var(--un-sdg-goal-14)",
+        color: "rgb(0, 125, 187)",
       },
       15: {
-        img: "./lib/svgs/goal-15.svg",
+        img: "../lib/svgs/goal-15.svg",
         label: "Goal 15: Life on land",
-        color: "var(--un-sdg-goal-15)",
+        color: "rgb(63, 175, 73)",
       },
       16: {
-        img: "./lib/svgs/goal-16.svg",
+        img: "../lib/svgs/goal-16.svg",
         label: "Goal 16: Peace, justice and strong institutions",
-        color: "var(--un-sdg-goal-16)",
+        color: "rgb(1, 85, 138)",
       },
       17: {
-        img: "./lib/svgs/goal-17.svg",
+        img: "../lib/svgs/goal-17.svg",
         label: "Goal 17: Partnerships for the goals",
-        color: "var(--un-sdg-goal-17)",
+        color: "rgb(25, 54, 103)",
       },
     };
     // Retrieve the properties for the current goal
@@ -183,14 +185,14 @@ export class unSdg extends DDDSuper(LitElement) {
     if (properties) {
       this.imgSrc = properties.img;
       this.label = properties.label;
-      this.style.setProperty("background-color", properties.color);
+      this.color = properties.color;
     }
   }
 
   // Render the HTML structure of the component
   render() {
     return html`
-      <div class="svg-wrapper">
+      <div class="svg-wrapper" style="background-color: ${this.color}">
         ${this.isImageVisible
           ? html`
               <img
